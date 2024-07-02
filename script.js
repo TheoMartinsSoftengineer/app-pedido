@@ -172,14 +172,16 @@ checkoutBtn.addEventListener("click", function(){
     //Enviar o pedido para api do whats
     const cartItems = cart.map((item) => {
         return(
-            ` ${item.name} Quantidade: (${item.quantity}) Preço: R$${item.price} |`
+            ` ${item.name} Quantidade: (${item.quantity}) Preço: R$${item.price}|`
         )
     }).join("")
 
     const message = encodeURIComponent(cartItems)
-    const phone = "32999052533"
+    const phone = "32988334278"
 
-    window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`,"_blank")
+    window.open(`https://wa.me/${phone}?text=${message} 
+        Total: ${cartTotal.textContent}
+        Endereço: ${addressInput.value}`,"_blank")
 
     cart = [];
     updateCartModal();
@@ -190,7 +192,7 @@ checkoutBtn.addEventListener("click", function(){
 function checkRestaurantOpen(){
     const data = new Date();
     const hora = data.getHours();
-    return hora >= 18 && hora < 22;
+    return hora >= 9 && hora < 18;
 }
 
 const spanItem = document.getElementById("date-span")
